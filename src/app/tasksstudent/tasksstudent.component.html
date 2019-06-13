@@ -1,0 +1,22 @@
+<section id="main-content">
+    <section class="wrapper site-min-height">
+      <div class="row">
+        <div class="col-md" style="margin-left:20px; margin-right:20px;">
+          <h1 class="text-center alert alert-success mt-md-4">My Tasks</h1>
+            <table class="table table-hover table-bordered mt-md-2">
+                <thead class="alert-danger">
+                  <tr>
+                      <td class="text-center">Task Link</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let t of tasks">
+                      <td class="text-center"><a href="{{t.taskName}}">{{t.taskName}}</a></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+    </section>
+  </section>
+  

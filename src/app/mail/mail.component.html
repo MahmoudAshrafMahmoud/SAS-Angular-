@@ -1,0 +1,32 @@
+alert-danger<section id="main-content">
+  <section class="wrapper site-min-height">
+    <div class="row">
+      <div class="col-md" style="margin-left:20px; margin-right:20px; ">
+        <h1 class="text-center alert ">Send Mail</h1>
+        <form #submitForm="ngForm" (ngSubmit)="sendEmail(submitForm)">
+            <div>
+                <!-- <label class="lbl">Email Address</label> -->
+                <input type="text" name="email" #email="ngModel" ngModel required
+                  pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+                  [className]="formSubmit && !email.pattern ? 'error' : '' " placeholder="Email Address" id="username" />
+        
+                <p *ngIf="formSubmit || (email.errors?.required && email.touched)">Email is Required</p>
+                <p *ngIf="formSubmit || (email.errors?.pattern && email.touched)">Email is InValid</p>
+              </div>
+          <div>
+            <input class="form control"  type="text" name="subject" #subject="ngModel" ngModel placeholder="Enter Your subject"  required />
+            <!-- <div class="alert alert-danger" *ngIF="!email.value" >email not validate</div> -->
+            </div>
+            <div>
+                
+              <textarea  cols="50" rows="5" placeholder="Your Message content" name="content" #content="ngModel" ngModel  required ></textarea>
+              <!-- <div class="alert alert-danger" *ngIF="!email.value" >email not validate</div> -->
+              </div>
+          <div>
+          </div>
+          <button type="submit" class="btn btn-success" color="primary">Send</button>
+          </form> 
+      </div>
+    </div>
+  </section>
+</section>

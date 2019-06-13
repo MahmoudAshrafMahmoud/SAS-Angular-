@@ -1,0 +1,23 @@
+<section id="main-content">
+  <section class="wrapper site-min-height">
+    <div class="row">
+      <div class="col-md" style="margin-left:20px; margin-right:20px;">
+        <h1 class="text-center alert alert-success mt-md-4">My Courses</h1>
+          <table class="table table-hover table-bordered mt-md-2">
+              <thead class="alert-danger">
+                <tr>
+                    <td class="text-center">Course Name</td>
+                    <td class="text-center">Level</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let c of courses">
+                    <td class="text-center">{{ c.crs_Name}}</td>
+                    <td class="text-center">{{ c.levelid}}</td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+    </div>
+  </section>
+</section>

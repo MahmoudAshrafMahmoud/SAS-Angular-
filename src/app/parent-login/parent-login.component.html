@@ -1,0 +1,27 @@
+<div class="container" style="margin-top: 0; padding-top: 10%;">
+    <section id="content">
+      <form class="login100-form validate-form" (ngSubmit)="login(submitForm)" #submitForm="ngForm">
+        <h1>Parent Login Form</h1>
+        <div>
+          <!-- <label class="lbl">Email Address</label> -->
+          <input type="text" name="email" #email="ngModel" ngModel required
+            pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+            [className]="formSubmit && !email.pattern ? 'error' : '' " placeholder="Email Address" id="username" />
+  
+          <p *ngIf="formSubmit || (email.errors?.required && email.touched)">Email is Required</p>
+          <p *ngIf="formSubmit || (email.errors?.pattern && email.touched)">Email is InValid</p>
+        </div>
+        <div>
+          <!-- <label class="lbl">Password</label> -->
+  
+          <input type="password" name="pass" #pass="ngModel" ngModel required
+            [className]="formSubmit && !pass.valid ? 'error' : '' " id="myInput" placeholder="Password" id="password" />
+          <p *ngIf="formSubmit || (!pass.valid && pass.touched)">pass is Required</p>
+        </div>
+        <div>
+          <input type="submit" value="Log in" />
+        </div>
+      </form><!-- form -->
+    </section><!-- content -->
+  </div>
+  

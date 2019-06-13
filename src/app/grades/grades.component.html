@@ -1,0 +1,110 @@
+<section id="main-content">
+  <section class="wrapper site-min-height">
+    <div class="row">
+      <div class="col-md" style="margin-left:20px; margin-right:20px;">
+        <button type="button" class="btn btn-success mt-md-2 btnSpecial" data-toggle="modal" data-target="#myModalAdd">Add New</button>
+       -->
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- Modal for Edit and Update Grade -->
+<div id="myModal" *ngIf="Grade" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title text-center headerOfModal" style="color: rgb(255, 240, 240)">Edit Grades' Information </h2>
+        </div>
+        <div class="modal-body">
+        <form (ngSubmit)="updateGrades(submitF)" #submitF="ngForm" class="form-group">
+
+          <input type="hidden" [value]="Grade.id" ngModel name="id" #id="ngModel">
+          <div class="form-group">
+              <label>Levels</label>
+              <select (valueChange)="filterCourses()"  name="RoleId" ngModel #RoleId="ngModel" class="form-control">
+                <option *ngFor="let level of Levels"  value="{{level.id}}">{{level.levelName}}</option>
+              </select>
+              </div>
+  
+              <div class="form-group">
+              <label>Courses</label>
+              <select ngModel #CrsId="ngModel" ngmodel class="form-control">
+                <option *ngFor="let crs of Courses"  value="{{crs.code}}">{{crs.crs_Name}}</option>
+              </select>
+              </div>
+  
+              <!-- TODO DropDown List For Levels and Course names in each level -->
+  
+              <label >Student ID</label>
+              <input type="text" (keyup)="displayName($event)"  class="form-control" id="LN" ngModel name="stdId" #stdId="ngModel" required>
+              <br />
+  
+              <div class="alert alert-danger text-center">{{fName}}  {{lName}}</div> 
+              <!-- TODO Notify The Name of Student -->
+              <br/> 
+              <label>Grade</label>
+              <input type="text" class="form-control" id="AFN" [value]="Grade.grade" ngModel  name="grade" #grade="ngModel" required>
+              <br />
+  
+
+              <button type="submit" class="btn btn-success">save</button>
+              &nbsp; &nbsp;
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 
+                    </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal content For Add Grade-->
+<div id="myModalAdd" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title text-center headerOfModal" style="color: rgb(255, 240, 240)">Grades Form </h2>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="AddGrade(subitForm)" #subitForm="ngForm" class="form-group">
+
+          <div class="form-group">
+            <label>Levels</label>
+            <select (valueChange)="filterCourses()" name="RoleId" ngModel #RoleId="ngModel" class="form-control">
+              <option *ngFor="let level of Levels"  value="{{level.id}}">{{level.levelName}}</option>
+            </select>
+            </div>
+
+            <div class="form-group">
+            <label>Courses</label>
+            <select name="CrsId" ngModel #CrsId="ngModel" ngmodel class="form-control">
+              <option *ngFor="let crs of Courses"  value="{{crs.code}}">{{crs.crs_Name}}</option>
+            </select>
+            </div>
+
+            <!-- TODO DropDown List For Levels and Course names in each level -->
+
+            <label >Student ID</label>
+            <input type="text" (keyup)="displayName($event)"  class="form-control" id="LN" ngModel name="stdId" #stdId="ngModel" required>
+            <p class="alert-danger" *ngIf="!stdId.valid && stdId.touched">The Student ID Is Required</p>
+            <br />
+
+            <label >Student Name</label>
+            <div class="alert alert-danger text-center">{{fName}}  {{lName}}</div> 
+            <!-- TODO Notify The Name of Student -->
+            <br/> 
+            <label>Grade</label>
+            <input type="text" class="form-control"  id="AFN" ngModel name="grade" #grade="ngModel" required>
+            <p class="alert-danger" *ngIf="!grade.valid && grade.touched">The Grade Is Required</p>
+            <br />
+
+
+            <button type="submit" class="btn btn-success">save</button>
+            &nbsp; &nbsp;
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
